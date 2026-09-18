@@ -1,0 +1,156 @@
+OOAD LAB - CAC LENH KIEM TRA BT-01 DEN BT-12
+================================================
+
+Luu y:
+- PowerShell dung $env:JAVA_HOME, $env:PROCESSOR_ARCHITECTURE
+- CMD dung %JAVA_HOME%, %PROCESSOR_ARCHITECTURE%
+
+BT-01 - Kiem tra he dieu hanh va kien truc
+------------------------------------------
+PowerShell:
+Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture
+$env:PROCESSOR_ARCHITECTURE
+
+CMD:
+ver
+echo %PROCESSOR_ARCHITECTURE%
+
+BT-02 - Kiem tra Java, Javac, JAVA_HOME
+---------------------------------------
+PowerShell:
+java -version
+javac -version
+$env:JAVA_HOME
+where.exe java
+where.exe javac
+
+CMD:
+java -version
+javac -version
+echo %JAVA_HOME%
+where java
+where javac
+
+BT-03 - Kiem tra Maven va Java Maven dang dung
+----------------------------------------------
+PowerShell/CMD:
+mvn -version
+
+Can xem cac dong:
+Apache Maven ...
+Maven home: ...
+Java version: ...
+runtime: ...
+
+BT-04 - Kiem tra Git, ten va email
+----------------------------------
+PowerShell/CMD:
+git --version
+git config --global user.name
+git config --global user.email
+
+BT-05 - Kiem tra Project SDK trong IntelliJ
+-------------------------------------------
+Khong co lenh bat buoc.
+Vao:
+File -> Project Structure -> Project
+Kiem tra:
+Project SDK = JDK 21
+Project language level = 21
+
+BT-06 - Kiem tra PlantUML Integration
+-------------------------------------
+Khong co lenh bat buoc.
+Vao:
+File -> Settings -> Plugins -> Installed
+Tim:
+PlantUML Integration
+Kiem tra plugin dang Enabled.
+
+BT-07 - Kiem tra project da mo dung Maven
+-----------------------------------------
+Trong IntelliJ:
+- Co file pom.xml
+- Mo cua so Maven ben phai
+- Thay Lifecycle / Plugins
+
+Co the kiem tra o Terminal:
+mvn -version
+mvn validate
+
+Neu BUILD SUCCESS thi pom.xml duoc Maven doc thanh cong.
+
+BT-08 - Chay Main bang nut Run trong IDE
+----------------------------------------
+Trong IntelliJ:
+- Mo Main.java
+- Bam nut tam giac xanh Run
+- Kiem tra cua so Run
+Can thay:
+Process finished with exit code 0
+
+BT-09 - Kiem tra Maven build
+----------------------------
+PowerShell/CMD tai thu muc project:
+mvn clean test
+mvn package
+
+Can thay cuoi moi lenh:
+BUILD SUCCESS
+
+BT-10 - Kiem tra environment.txt
+--------------------------------
+PowerShell:
+Get-Content .\environment.txt
+Test-Path .\environment.txt
+
+CMD:
+type environment.txt
+
+Neu Test-Path tra ve True thi file ton tai.
+
+BT-11 - Kiem tra Git repository va commit dau
+---------------------------------------------
+Phai dung terminal tai thu muc project:
+git status
+git log --oneline -5
+
+Neu can xem remote:
+git remote -v
+
+BT-12 - Minh chung cay thu muc va cua so chay
+--------------------------------------------
+Khong co lenh bat buoc.
+Trong IntelliJ, chup/show:
+- Project tree ben trai
+- pom.xml
+- src
+- Main.java
+- Cua so Run ben duoi
+- Process finished with exit code 0
+
+================================================
+NHOM LENH NHANH - POWERSHELL
+================================================
+java -version
+javac -version
+$env:JAVA_HOME
+mvn -version
+git --version
+git config --global user.name
+git config --global user.email
+git status
+git log --oneline -5
+Get-Content .\environment.txt
+
+================================================
+THONG TIN MAY HIEN TAI
+================================================
+Java: 21.0.7 LTS
+JAVA_HOME: C:\Program Files\Java\jdk-21
+Maven: 3.9.11
+Maven home: D:\Software\Java\apache-maven-3.9.11
+Git: 2.45.1.windows.1
+Git user.name: Le Hoang Phuc
+Git user.email: phuc052005@gmail.com
+Architecture: AMD64 (x64)
