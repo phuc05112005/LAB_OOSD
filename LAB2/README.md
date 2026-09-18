@@ -1,26 +1,26 @@
-# LAB 2 - QUẢN LÝ THƯ VIỆN WINFORMS
+# LAB 2 – HỆ THỐNG QUẢN LÝ THƯ VIỆN
 
-## 1. Thông tin bài Lab
+## 1. Giới thiệu
 
-Bài Lab xây dựng ứng dụng **Quản lý thư viện** bằng **C# WinForms (.NET Framework 4.7.2)** và kết nối với **SQL Server LocalDB**.
+Bài thực hành xây dựng ứng dụng **Quản lý thư viện** bằng **C# Windows Forms** trên nền **.NET Framework 4.7.2**, kết nối với **SQL Server LocalDB**.
 
-Trong buổi thực hành hôm nay, project tập trung vào các nội dung:
+Mục tiêu của bài là làm quen với cách tổ chức một ứng dụng WinForms có kết nối cơ sở dữ liệu, tách phần giao diện, truy xuất dữ liệu và xử lý nghiệp vụ thành các thành phần riêng để thuận tiện cho việc phát triển và bảo trì.
 
-- Tạo cấu trúc project WinForms.
-- Kết nối ứng dụng với cơ sở dữ liệu `QuanLyThuVienDB`.
-- Xây dựng giao diện chính `FrmMain`.
-- Xây dựng giao diện `FrmDanhMuc`.
-- Đọc dữ liệu từ SQL Server và hiển thị lên `DataGridView`.
-- Tổ chức mã nguồn theo hướng tách phần giao diện, truy xuất dữ liệu và xử lý nghiệp vụ.
+Trong giai đoạn hiện tại, bài làm tập trung vào thiết kế giao diện, kết nối cơ sở dữ liệu và hiển thị dữ liệu từ SQL Server lên các Form. Các chức năng thêm, cập nhật, xóa và các nghiệp vụ mượn – trả sẽ được hoàn thiện ở các bước tiếp theo.
+
+---
 
 ## 2. Công nghệ sử dụng
 
-- **Ngôn ngữ:** C#
-- **Giao diện:** Windows Forms
-- **Framework:** .NET Framework 4.7.2
-- **Cơ sở dữ liệu:** SQL Server LocalDB
-- **Thư viện truy cập dữ liệu:** `System.Data.SqlClient`
-- **IDE:** Visual Studio
+- Ngôn ngữ lập trình: **C#**
+- Giao diện: **Windows Forms**
+- Nền tảng: **.NET Framework 4.7.2**
+- Hệ quản trị cơ sở dữ liệu: **SQL Server LocalDB**
+- Thư viện truy xuất dữ liệu: **System.Data.SqlClient**
+- Môi trường phát triển: **Microsoft Visual Studio**
+- Quản lý mã nguồn: **Git và GitHub**
+
+---
 
 ## 3. Cấu trúc project
 
@@ -28,27 +28,58 @@ Trong buổi thực hành hôm nay, project tập trung vào các nội dung:
 QuanLyThuVien
 ├── Data
 │   └── Db.cs
+│
 ├── Forms
 │   ├── FrmMain.cs
-│   └── FrmDanhMuc.cs
+│   ├── FrmDanhMuc.cs
+│   ├── FrmSach.cs
+│   └── FrmDocGia.cs
+│
 ├── Services
-│   └── DanhMucService.cs
+│   ├── DanhMucService.cs
+│   ├── SachService.cs
+│   ├── DocGiaService.cs
+│   ├── MuonTraService.cs
+│   └── ThongKeService.cs
+│
 ├── Models.cs
 ├── App.config
-└── Program.cs
+├── Program.cs
+└── QuanLyThuVien.csproj
 ```
 
-### Ý nghĩa các thành phần
+### Vai trò của các thành phần
 
-- `Data/Db.cs`: quản lý kết nối và thực thi câu lệnh SQL.
-- `Services/DanhMucService.cs`: lấy dữ liệu danh mục từ cơ sở dữ liệu.
-- `Forms/FrmMain.cs`: giao diện chính và điều hướng sang các chức năng.
-- `Forms/FrmDanhMuc.cs`: hiển thị dữ liệu Nhân viên, Thể loại và Nhà xuất bản.
-- `Models.cs`: chứa các lớp mô hình dữ liệu.
-- `App.config`: chứa chuỗi kết nối cơ sở dữ liệu.
-- `Program.cs`: điểm bắt đầu chạy chương trình.
+- `Data/Db.cs`: quản lý kết nối và cung cấp các hàm truy vấn dùng chung.
+- `Forms`: chứa các màn hình giao diện của chương trình.
+- `Services`: thực hiện truy xuất dữ liệu và xử lý nghiệp vụ tương ứng với từng nhóm chức năng.
+- `Models.cs`: khai báo các lớp mô hình dữ liệu.
+- `App.config`: lưu cấu hình kết nối cơ sở dữ liệu.
+- `Program.cs`: điểm khởi động của ứng dụng.
 
-## 4. Kết nối cơ sở dữ liệu
+Cách tổ chức này giúp giao diện không thực hiện câu lệnh SQL trực tiếp mà thông qua lớp Service và lớp truy cập dữ liệu.
+
+---
+
+## 4. Cơ sở dữ liệu
+
+Ứng dụng sử dụng cơ sở dữ liệu:
+
+```text
+QuanLyThuVienDB
+```
+
+Một số bảng chính của hệ thống gồm:
+
+- `NhanVien`
+- `TheLoai`
+- `NhaXuatBan`
+- `DauSach`
+- `DocGia`
+- `TheDocGia`
+- `PhieuMuon`
+- `ChiTietPhieuMuon`
+- `PhieuPhat`
 
 Chuỗi kết nối được khai báo trong `App.config`:
 
@@ -60,93 +91,106 @@ Chuỗi kết nối được khai báo trong `App.config`:
 </connectionStrings>
 ```
 
-Lớp `Db.cs` đọc chuỗi kết nối và cung cấp các hàm dùng chung như:
+---
 
-- `OpenConnection()`
-- `Query()`
-- `Execute()`
-- `Scalar()`
+## 5. Lớp truy cập dữ liệu
 
-Trong phần thực hành hôm nay chủ yếu sử dụng `Query()` để lấy dữ liệu từ SQL Server.
+File `Data/Db.cs` được sử dụng làm lớp truy cập dữ liệu dùng chung.
 
-## 5. Giao diện FrmMain
+Các phương thức chính:
 
-`FrmMain` là màn hình chính của chương trình.
+```text
+OpenConnection()
+Query()
+Execute()
+Scalar()
+```
 
-Các chức năng dự kiến gồm:
+Trong giai đoạn hiện tại, phương thức `Query()` được sử dụng chủ yếu để đọc dữ liệu từ SQL Server và trả về `DataTable`.
+
+Luồng truy xuất dữ liệu:
+
+```text
+Form
+   ↓
+Service
+   ↓
+Db.cs
+   ↓
+SQL Server
+   ↓
+DataTable
+   ↓
+DataGridView / ComboBox
+```
+
+---
+
+## 6. FrmMain – Giao diện chính
+
+`FrmMain` là cửa sổ chính và đóng vai trò điều hướng tới các chức năng của hệ thống.
+
+Các nhóm chức năng gồm:
 
 - Danh mục / Nhân viên
 - Quản lý đầu sách
-- Độc giả
-- Mượn / Trả
+- Quản lý độc giả
+- Mượn / Trả sách
 - Thống kê
 - Thoát chương trình
 
-Trong buổi hôm nay đã kết nối nút **Danh mục / Nhân viên** với `FrmDanhMuc`.
+Các Form con được mở từ `FrmMain` bằng `ShowDialog()`.
 
-Ví dụ:
+Ví dụ mở Form quản lý sách:
 
 ```csharp
-private void btnDanhMuc_Click(object sender, EventArgs e)
+private void btnSach_Click(object sender, EventArgs e)
 {
-    FrmDanhMuc f = new FrmDanhMuc();
+    FrmSach f = new FrmSach();
     f.ShowDialog();
 }
 ```
 
-## 6. Giao diện FrmDanhMuc
+---
 
-`FrmDanhMuc` gồm 3 tab:
+## 7. FrmDanhMuc – Danh mục và nhân viên
 
-### Tab Nhân viên
+`FrmDanhMuc` được chia thành ba tab.
 
-Các control chính:
+### 7.1. Nhân viên
 
-- `txtNVMa`
-- `txtNVHo`
-- `txtNVTen`
-- `cboNVPhai`
-- `dtNVNgaySinh`
-- `txtNVChucVu`
-- `txtNVSDT`
-- `dgvNV`
+Thông tin được quản lý gồm:
 
-### Tab Thể loại
+- Mã nhân viên
+- Họ
+- Tên
+- Phái
+- Ngày sinh
+- Chức vụ
+- Số điện thoại
 
-Các control chính:
+Dữ liệu được hiển thị trên `dgvNV`.
 
-- `txtTLMa`
-- `txtTLTen`
-- `dgvTL`
+### 7.2. Thể loại
 
-### Tab Nhà xuất bản
+Thông tin gồm:
 
-Các control chính:
+- Mã thể loại
+- Tên thể loại
 
-- `txtNXBMa`
-- `txtNXBDiaChi`
-- `txtNXBSDT`
-- `dgvNXB`
+Dữ liệu được hiển thị trên `dgvTL`.
 
-Hiện tại các nút Thêm, Cập nhật, Xóa, Làm mới mới được thiết kế giao diện, chưa triển khai CRUD trong buổi này.
+### 7.3. Nhà xuất bản
 
-## 7. Đọc dữ liệu từ cơ sở dữ liệu
+Thông tin gồm:
 
-`DanhMucService` chịu trách nhiệm lấy dữ liệu từ SQL Server.
+- Mã nhà xuất bản
+- Địa chỉ
+- Số điện thoại
 
-Ví dụ:
+Dữ liệu được hiển thị trên `dgvNXB`.
 
-```csharp
-public DataTable LayTheLoai()
-{
-    return Db.Query(
-        @"SELECT MaTheLoai, TenTheLoai
-          FROM TheLoai
-          ORDER BY TenTheLoai");
-}
-```
-
-Trong `FrmDanhMuc`, dữ liệu được gán cho `DataGridView`:
+`FrmDanhMuc` sử dụng `DanhMucService` để lấy dữ liệu từ cơ sở dữ liệu.
 
 ```csharp
 private void TaiDuLieu()
@@ -155,119 +199,168 @@ private void TaiDuLieu()
     dgvTL.DataSource = service.LayTheLoai();
     dgvNXB.DataSource = service.LayNhaXuatBan();
 
-    dgvNV.AutoSizeColumnsMode =
-        DataGridViewAutoSizeColumnsMode.Fill;
-
-    dgvTL.AutoSizeColumnsMode =
-        DataGridViewAutoSizeColumnsMode.Fill;
-
-    dgvNXB.AutoSizeColumnsMode =
-        DataGridViewAutoSizeColumnsMode.Fill;
+    dgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+    dgvTL.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+    dgvNXB.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 }
 ```
 
-## 8. Luồng hoạt động hiện tại
+---
+
+## 8. FrmSach – Quản lý đầu sách
+
+`FrmSach` đã được thiết kế giao diện và kết nối với cơ sở dữ liệu.
+
+Các thông tin chính:
+
+- Mã đầu sách
+- Tên sách
+- Năm xuất bản
+- Số lượng hiện có
+- Thể loại
+- Nhà xuất bản
+
+Hai `ComboBox` được nạp dữ liệu từ các danh mục có sẵn:
 
 ```text
-Program.cs
-    ↓
-FrmMain
-    ↓
-Bấm "Danh mục / Nhân viên"
-    ↓
-FrmDanhMuc
-    ↓
-FrmDanhMuc_Load
-    ↓
-DanhMucService
-    ↓
-Db.Query()
-    ↓
-SQL Server - QuanLyThuVienDB
-    ↓
-DataTable
-    ↓
-DataGridView
+cboTheLoai → bảng TheLoai
+cboNXB     → bảng NhaXuatBan
 ```
 
-Luồng trên cho thấy giao diện không truy vấn SQL trực tiếp mà thông qua `Service` và lớp `Db`.
-
-## 9. Một số lỗi đã xử lý trong buổi thực hành
-
-### 9.1. Double-click control làm Visual Studio tự sinh event
-
-Khi double-click vào Button, TextBox, Label hoặc DataGridView trong Designer, Visual Studio có thể tự sinh các event như:
+Danh sách đầu sách được lấy từ bảng `DauSach` thông qua `SachService` và hiển thị trên `dgvSach`.
 
 ```csharp
-button5_Click
-textBox7_TextChanged
-label1_Click
-dataGridView1_CellContentClick
+private void FrmSach_Load(object sender, EventArgs e)
+{
+    cboTheLoai.DataSource = danhMuc.LayTheLoai();
+    cboTheLoai.DisplayMember = "TenTheLoai";
+    cboTheLoai.ValueMember = "MaTheLoai";
+
+    cboNXB.DataSource = danhMuc.LayNhaXuatBan();
+    cboNXB.DisplayMember = "MaNhaXuatBan";
+    cboNXB.ValueMember = "MaNhaXuatBan";
+
+    TaiDuLieu();
+}
 ```
+
+---
+
+## 9. FrmDocGia – Độc giả và thẻ thư viện
+
+`FrmDocGia` đã được thiết kế giao diện và chuẩn bị phần kết nối dữ liệu.
+
+Thông tin độc giả gồm:
+
+- Mã độc giả
+- Họ
+- Tên
+- Ngày sinh
+- Phái
+- Số điện thoại
+- Địa chỉ
+- Email
+- Ảnh 3x4
+
+Thông tin thẻ thư viện gồm:
+
+- Ngày cấp
+- Hạn sử dụng
+- Trạng thái đóng lệ phí
+
+Danh sách độc giả và thông tin thẻ gần nhất được lấy thông qua `DocGiaService` và hiển thị trên `dgvDocGia`.
+
+---
+
+## 10. Kết quả thực hiện
+
+Đến thời điểm hiện tại, bài thực hành đã hoàn thành các nội dung:
+
+- Tạo project WinForms đúng cấu trúc.
+- Kết nối thành công với SQL Server LocalDB.
+- Khởi chạy chương trình từ `FrmMain`.
+- Điều hướng từ `FrmMain` tới các Form đã xây dựng.
+- Hoàn thiện giao diện `FrmDanhMuc`.
+- Hiển thị dữ liệu Nhân viên, Thể loại và Nhà xuất bản từ cơ sở dữ liệu.
+- Hoàn thiện giao diện `FrmSach`.
+- Nạp dữ liệu Thể loại và Nhà xuất bản vào `ComboBox`.
+- Kết nối `FrmSach` với bảng `DauSach`.
+- Hoàn thiện giao diện `FrmDocGia`.
+- Chuẩn bị kết nối dữ liệu độc giả và thẻ thư viện.
+- Tách phần truy xuất dữ liệu khỏi giao diện thông qua các lớp Service và `Db.cs`.
+
+---
+
+## 11. Một số vấn đề đã xử lý trong quá trình thực hiện
+
+### 11.1. Event được tạo ngoài ý muốn
+
+Khi double-click vào control trong WinForms Designer, Visual Studio tự động tạo event như:
+
+```text
+button_Click
+textBox_TextChanged
+label_Click
+```
+
+Nếu không sử dụng, cần gỡ event trong cửa sổ Properties trước khi xóa method trong file `.cs`.
+
+### 11.2. DataGridView bị lặp cột
+
+Nguyên nhân là vừa tạo cột thủ công trong Designer vừa để `AutoGenerateColumns = true`.
 
 Cách xử lý:
 
-- Chọn control.
-- Mở `Properties`.
-- Chọn biểu tượng sự kiện `⚡`.
-- Xóa event không sử dụng.
-- Sau đó mới xóa method rỗng trong file `.cs`.
-
-Không nên xóa method trước khi gỡ event trong Designer.
-
-### 9.2. DataGridView bị lặp cột
-
-Nguyên nhân là vừa tạo cột thủ công trong Designer, vừa để `AutoGenerateColumns = true`.
-
-Cách xử lý trong buổi hôm nay:
-
 - Xóa các cột tạo thủ công.
-- Giữ `AutoGenerateColumns = true`.
-- Để `DataGridView` tự sinh cột từ `DataTable`.
+- Để `DataGridView` tự sinh cột từ `DataSource`.
 
-### 9.3. Nút Danh mục không mở Form
+### 11.3. Nút điều hướng không mở Form
 
-Nguyên nhân là event `Click` của button đã bị xóa.
+Nguyên nhân là event `Click` của Button chưa được nối hoặc đã bị xóa.
 
-Cách sửa:
+Cách xử lý:
 
 ```text
-Chọn button
+Chọn Button
 → Properties
-→ ⚡
+→ Events
 → Click
-→ btnDanhMuc_Click
+→ chọn đúng hàm xử lý
 ```
 
-## 10. Kết quả đạt được
+### 11.4. Không đưa thư mục tạm của Visual Studio lên Git
 
-Sau buổi thực hành, project đã thực hiện được:
+Các thư mục và file sinh tự động như:
 
-- Khởi chạy chương trình từ `FrmMain`.
-- Mở được `FrmDanhMuc`.
-- Kết nối thành công với SQL Server LocalDB.
-- Đọc dữ liệu từ database `QuanLyThuVienDB`.
-- Hiển thị dữ liệu lên:
-  - `dgvNV`
-  - `dgvTL`
-  - `dgvNXB`
-- Tách phần truy xuất dữ liệu ra khỏi giao diện bằng `Db.cs` và `DanhMucService.cs`.
+```text
+.vs/
+bin/
+obj/
+*.suo
+*.cache
+```
 
-## 11. Phần sẽ tiếp tục
+được loại trừ bằng `.gitignore`.
 
-Các phần tiếp theo của bài Lab:
+---
 
-- Hoàn thiện `FrmSach`.
-- Hoàn thiện `FrmDocGia`.
-- Hoàn thiện `FrmMuonTra`.
-- Hoàn thiện `FrmThongKe`.
-- Kết nối dữ liệu cho các Form còn lại.
-- Sau đó mới triển khai các chức năng Thêm, Cập nhật, Xóa, Tìm kiếm, Mượn sách, Trả sách và Thống kê.
+## 12. Hướng hoàn thiện tiếp theo
 
-## 12. Ghi chú
+- Hoàn tất kết nối dữ liệu cho `FrmDocGia`.
+- Xây dựng `FrmMuonTra`.
+- Xây dựng `FrmThongKe`.
+- Hoàn thiện các chức năng thêm, cập nhật, xóa dữ liệu.
+- Hoàn thiện chức năng cấp thẻ và gia hạn thẻ độc giả.
+- Xử lý nghiệp vụ mượn và trả sách.
+- Kiểm tra điều kiện mượn sách và tình trạng thẻ.
+- Xử lý phạt khi trả trễ, làm mất hoặc làm hư sách.
+- Xây dựng phần thống kê.
+- Kiểm thử toàn bộ chương trình trước khi hoàn thành bài Lab.
 
-Trong giai đoạn hiện tại, mục tiêu chính là:
+---
 
-> **Hoàn thiện giao diện và kết nối cơ sở dữ liệu trước, chưa tập trung xử lý toàn bộ chức năng CRUD.**
+## 13. Ghi chú
 
-Điều này giúp kiểm tra lần lượt từng tầng của chương trình và hạn chế lỗi khi phát triển các chức năng phức tạp hơn.
+Bài làm được triển khai theo từng bước: thiết kế giao diện, kiểm tra kết nối cơ sở dữ liệu, hiển thị dữ liệu và sau đó mới bổ sung nghiệp vụ.
+
+Cách thực hiện này giúp dễ kiểm tra lỗi ở từng phần và hạn chế việc xử lý quá nhiều chức năng cùng lúc.

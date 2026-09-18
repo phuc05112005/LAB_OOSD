@@ -27,5 +27,22 @@ namespace QuanLyThuVien.Forms
             FrmDanhMuc f = new FrmDanhMuc();
             f.ShowDialog();
         }
+
+        private void btnSach_Click(object sender, EventArgs e)
+        {
+            FrmSach f = new FrmSach();
+            f.ShowDialog();
+        }
+
+        private void btnDocGia_Click(object sender, EventArgs e)
+        {
+            FrmDocGia f = new FrmDocGia();
+            f.ShowDialog();
+        }
+
+        private void btn_Thoat(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -54,11 +54,23 @@
     <Compile Include="Forms\FrmDanhMuc.Designer.cs">
       <DependentUpon>FrmDanhMuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDocGia.Designer.cs">
+      <DependentUpon>FrmDocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSach.Designer.cs">
+      <DependentUpon>FrmSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Models.cs" />
     <Compile Include="Program.cs" />
@@ -71,8 +83,14 @@
     <EmbeddedResource Include="Forms\FrmDanhMuc.resx">
       <DependentUpon>FrmDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDocGia.resx">
+      <DependentUpon>FrmDocGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSach.resx">
+      <DependentUpon>FrmSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

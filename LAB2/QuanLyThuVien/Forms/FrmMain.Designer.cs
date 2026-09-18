@@ -55,6 +55,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Quản lý đầu sách";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnSach_Click);
             // 
             // button3
             // 
@@ -64,6 +65,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Độc giả và thẻ";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnDocGia_Click);
             // 
             // button4
             // 
@@ -91,6 +93,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Thoát";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btn_Thoat);
             // 
             // label1
             // 
