@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4608FCC-62AA-404E-8967-43F25E002AF3}</ProjectGuid>
+    <ProjectGuid>{FFC4CF19-EEDF-413A-8888-A6F22B3198DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>QuanLyThuVien</RootNamespace>
-    <AssemblyName>QuanLyThuVien</AssemblyName>
+    <RootNamespace>QuanLyKhachSan</RootNamespace>
+    <AssemblyName>QuanLyKhachSan</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,67 +48,59 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Db.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmDanhMuc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmDanhMuc.Designer.cs">
       <DependentUpon>FrmDanhMuc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmDocGia.cs">
+    <Compile Include="Forms\FrmDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmDocGia.Designer.cs">
-      <DependentUpon>FrmDocGia.cs</DependentUpon>
+    <Compile Include="Forms\FrmDatPhong.Designer.cs">
+      <DependentUpon>FrmDatPhong.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMain.cs">
+    <Compile Include="Forms\FrmPhongTienNghi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <Compile Include="Forms\FrmPhongTienNghi.Designer.cs">
+      <DependentUpon>FrmPhongTienNghi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMuonTra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMuonTra.Designer.cs">
-      <DependentUpon>FrmMuonTra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmSach.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmSach.Designer.cs">
-      <DependentUpon>FrmSach.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmThongKe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmThongKe.Designer.cs">
-      <DependentUpon>FrmThongKe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models.cs" />
+    <Compile Include="Models\PhongDatItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DanhMucService.cs" />
-    <Compile Include="Services\DocGiaService.cs" />
-    <Compile Include="Services\MuonTraService.cs" />
-    <Compile Include="Services\SachService.cs" />
-    <Compile Include="Services\ThongKeService.cs" />
+    <Compile Include="Services\DatPhongService.cs" />
+    <Compile Include="Services\PhongTienNghiService.cs" />
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDanhMuc.aa.resx">
+      <DependentUpon>FrmDanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDanhMuc.resx">
       <DependentUpon>FrmDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmDocGia.resx">
-      <DependentUpon>FrmDocGia.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmDatPhong.resx">
+      <DependentUpon>FrmDatPhong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMuonTra.resx">
-      <DependentUpon>FrmMuonTra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmSach.resx">
-      <DependentUpon>FrmSach.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmThongKe.resx">
-      <DependentUpon>FrmThongKe.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmPhongTienNghi.resx">
+      <DependentUpon>FrmPhongTienNghi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
