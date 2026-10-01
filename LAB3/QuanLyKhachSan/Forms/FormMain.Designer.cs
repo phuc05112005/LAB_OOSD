@@ -67,6 +67,7 @@
             this.FrmDatPhong.Text = "Đặt / Nhận phòng";
             this.FrmDatPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.FrmDatPhong.UseVisualStyleBackColor = true;
+            this.FrmDatPhong.Click += new System.EventHandler(this.FrmDatPhong_Click);
             // 
             // FrmThongKe
             // 

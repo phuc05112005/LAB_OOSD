@@ -37,5 +37,13 @@ namespace QuanLyKhachSan.Forms
                 frm.ShowDialog(this);
             }
         }
+
+        private void FrmDatPhong_Click(object sender, EventArgs e)
+        {
+            using (var frm = new FrmDatPhong())
+            {
+                frm.ShowDialog(this);
+            }
+        }
     }
 }
