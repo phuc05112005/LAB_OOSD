@@ -1,0 +1,307 @@
+-- ============================================================================
+-- SCRIPT TẠO CƠ SỞ DỮ LIỆU CÓ RÀNG BUỘC & TRIGGER
+-- CSDL: QL_TourDuLich (MS SQL Server)
+-- ============================================================================
+
+IF EXISTS (SELECT name FROM sys.databases WHERE name = N'QL_TourDuLich')
+    DROP DATABASE QL_TourDuLich;
+GO
+
+CREATE DATABASE QL_TourDuLich;
+GO
+
+USE QL_TourDuLich;
+GO
+
+-- 1. BẢNG DANH MỤC
+CREATE TABLE Tour (
+    maTour VARCHAR(20) NOT NULL,
+    tenTour NVARCHAR(250) NOT NULL,
+    soNgay INT NOT NULL CONSTRAINT CK_Tour_SoNgay CHECK (soNgay >= 0),
+    soDem INT NOT NULL CONSTRAINT CK_Tour_SoDem CHECK (soDem >= 0),
+    giaMoiKhach DECIMAL(18, 2) NOT NULL CONSTRAINT CK_Tour_Gia CHECK (giaMoiKhach >= 0),
+    moTa NVARCHAR(MAX) NULL,
+    trangThai NVARCHAR(50) DEFAULT N'Đang hoạt động',
+    CONSTRAINT PK_Tour PRIMARY KEY (maTour)
+);
+
+CREATE TABLE DiemThamQuan (
+    maDiemThamQuan VARCHAR(20) NOT NULL,
+    tenDiem NVARCHAR(200) NOT NULL,
+    viTri NVARCHAR(250) NULL,
+    noiDung NVARCHAR(MAX) NULL,
+    yNghia NVARCHAR(MAX) NULL,
+    CONSTRAINT PK_DiemThamQuan PRIMARY KEY (maDiemThamQuan)
+);
+
+CREATE TABLE PhuongTien (
+    maPhuongTien VARCHAR(20) NOT NULL,
+    tenPhuongTien NVARCHAR(100) NOT NULL,
+    moTa NVARCHAR(MAX) NULL,
+    CONSTRAINT PK_PhuongTien PRIMARY KEY (maPhuongTien)
+);
+
+CREATE TABLE CoSoLuuTru (
+    maCoSoLuuTru VARCHAR(20) NOT NULL,
+    tenCoSo NVARCHAR(200) NOT NULL,
+    diaChi NVARCHAR(250) NULL,
+    hangSao INT NULL CONSTRAINT CK_CoSoLuuTru_Sao CHECK (hangSao BETWEEN 2 AND 5),
+    soDienThoai VARCHAR(20) NULL,
+    CONSTRAINT PK_CoSoLuuTru PRIMARY KEY (maCoSoLuuTru)
+);
+
+CREATE TABLE KhachHang (
+    maKhachHang VARCHAR(20) NOT NULL,
+    hoTen NVARCHAR(100) NOT NULL,
+    ngaySinh DATE NULL,
+    gioiTinh NVARCHAR(10) NULL,
+    diaChi NVARCHAR(250) NULL,
+    soDienThoai VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NULL,
+    CONSTRAINT PK_KhachHang PRIMARY KEY (maKhachHang)
+);
+
+CREATE TABLE HuongDanVien (
+    maHuongDanVien VARCHAR(20) NOT NULL,
+    hoTen NVARCHAR(100) NOT NULL,
+    ngaySinh DATE NULL,
+    soDienThoai VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NULL,
+    diaChi NVARCHAR(250) NULL,
+    luongCoBan DECIMAL(18, 2) DEFAULT 0 CONSTRAINT CK_HDV_LuongCB CHECK (luongCoBan >= 0),
+    trangThai NVARCHAR(50) DEFAULT N'Đang làm việc',
+    CONSTRAINT PK_HuongDanVien PRIMARY KEY (maHuongDanVien)
+);
+
+CREATE TABLE BangLuong (
+    maBangLuong VARCHAR(20) NOT NULL,
+    thang INT NOT NULL CONSTRAINT CK_BangLuong_Thang CHECK (thang BETWEEN 1 AND 12),
+    nam INT NOT NULL CONSTRAINT CK_BangLuong_Nam CHECK (nam >= 2000),
+    ngayLap DATE DEFAULT GETDATE(),
+    tongLuong DECIMAL(18, 2) DEFAULT 0 CONSTRAINT CK_BangLuong_Tong CHECK (tongLuong >= 0),
+    trangThai NVARCHAR(50) DEFAULT N'Chưa thanh toán',
+    CONSTRAINT PK_BangLuong PRIMARY KEY (maBangLuong)
+);
+
+-- 2. BẢNG NGIỆP VỤ & LỊCH TRÌNH
+CREATE TABLE LichTrinh (
+    maLichTrinh VARCHAR(20) NOT NULL,
+    maTour VARCHAR(20) NOT NULL,
+    tenLichTrinh NVARCHAR(200) NOT NULL,
+    moTa NVARCHAR(MAX) NULL,
+    CONSTRAINT PK_LichTrinh PRIMARY KEY (maLichTrinh),
+    CONSTRAINT FK_LichTrinh_Tour FOREIGN KEY (maTour) REFERENCES Tour(maTour) ON DELETE CASCADE
+);
+
+CREATE TABLE ChuyenKhoiHanh (
+    maChuyen VARCHAR(20) NOT NULL,
+    maTour VARCHAR(20) NOT NULL,
+    ngayKhoiHanh DATETIME2 NOT NULL,
+    ngayKetThuc DATETIME2 NOT NULL,
+    diemTapTrung NVARCHAR(250) NULL,
+    trangThai NVARCHAR(50) DEFAULT N'Mở bán',
+    CONSTRAINT PK_ChuyenKhoiHanh PRIMARY KEY (maChuyen),
+    CONSTRAINT FK_ChuyenKhoiHanh_Tour FOREIGN KEY (maTour) REFERENCES Tour(maTour),
+    CONSTRAINT CK_Chuyen_Ngay CHECK (ngayKetThuc >= ngayKhoiHanh)
+);
+
+CREATE TABLE ChangLichTrinh (
+    maChang VARCHAR(20) NOT NULL,
+    maLichTrinh VARCHAR(20) NOT NULL,
+    maDiemThamQuan VARCHAR(20) NULL,
+    maPhuongTien VARCHAR(20) NULL,
+    maCoSoLuuTru VARCHAR(20) NULL,
+    thuTu INT NOT NULL,
+    thoiGianDuKien NVARCHAR(100) NULL,
+    noiDungHoatDong NVARCHAR(MAX) NULL,
+    coDoiPhuongTien BIT DEFAULT 0,
+    thongTinBuaAn NVARCHAR(200) NULL,
+    CONSTRAINT PK_ChangLichTrinh PRIMARY KEY (maChang),
+    CONSTRAINT FK_Chang_LichTrinh FOREIGN KEY (maLichTrinh) REFERENCES LichTrinh(maLichTrinh) ON DELETE CASCADE,
+    CONSTRAINT FK_Chang_DiemThamQuan FOREIGN KEY (maDiemThamQuan) REFERENCES DiemThamQuan(maDiemThamQuan),
+    CONSTRAINT FK_Chang_PhuongTien FOREIGN KEY (maPhuongTien) REFERENCES PhuongTien(maPhuongTien),
+    CONSTRAINT FK_Chang_CoSoLuuTru FOREIGN KEY (maCoSoLuuTru) REFERENCES CoSoLuuTru(maCoSoLuuTru)
+);
+
+CREATE TABLE DanhGia (
+    maDanhGia VARCHAR(20) NOT NULL,
+    maKhachHang VARCHAR(20) NOT NULL,
+    maChuyen VARCHAR(20) NOT NULL,
+    ngayDanhGia DATETIME2 DEFAULT GETDATE(),
+    diemDanhGia INT CONSTRAINT CK_DanhGia_Diem CHECK (diemDanhGia BETWEEN 1 AND 5),
+    noiDung NVARCHAR(MAX) NULL,
+    CONSTRAINT PK_DanhGia PRIMARY KEY (maDanhGia),
+    CONSTRAINT FK_DanhGia_KhachHang FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang),
+    CONSTRAINT FK_DanhGia_Chuyen FOREIGN KEY (maChuyen) REFERENCES ChuyenKhoiHanh(maChuyen)
+);
+
+CREATE TABLE PhanCong (
+    maPhanCong VARCHAR(20) NOT NULL,
+    maHuongDanVien VARCHAR(20) NOT NULL,
+    maChuyen VARCHAR(20) NOT NULL,
+    ngayPhanCong DATE DEFAULT GETDATE(),
+    vaiTro NVARCHAR(100) DEFAULT N'HDV Chính',
+    trangThai NVARCHAR(50) DEFAULT N'Đã phân công',
+    CONSTRAINT PK_PhanCong PRIMARY KEY (maPhanCong),
+    CONSTRAINT FK_PhanCong_HDV FOREIGN KEY (maHuongDanVien) REFERENCES HuongDanVien(maHuongDanVien),
+    CONSTRAINT FK_PhanCong_Chuyen FOREIGN KEY (maChuyen) REFERENCES ChuyenKhoiHanh(maChuyen)
+);
+
+-- 3. BẢNG ĐĂNG KÝ (KẾ THỪA 1-1)
+CREATE TABLE DangKy (
+    maDangKy VARCHAR(20) NOT NULL,
+    maKhachHang VARCHAR(20) NOT NULL,
+    maChuyen VARCHAR(20) NOT NULL,
+    ngayDangKy DATETIME2 DEFAULT GETDATE(),
+    soLuongKhach INT NOT NULL CONSTRAINT CK_DangKy_SoLuong CHECK (soLuongKhach > 0),
+    tongTien DECIMAL(18, 2) NOT NULL CONSTRAINT CK_DangKy_TongTien CHECK (tongTien >= 0),
+    trangThai NVARCHAR(50) DEFAULT N'Mới đăng ký',
+    CONSTRAINT PK_DangKy PRIMARY KEY (maDangKy),
+    CONSTRAINT FK_DangKy_KhachHang FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang),
+    CONSTRAINT FK_DangKy_Chuyen FOREIGN KEY (maChuyen) REFERENCES ChuyenKhoiHanh(maChuyen)
+);
+
+CREATE TABLE DangKyDoan (
+    maDangKy VARCHAR(20) NOT NULL,
+    tenDonViHoacDoan NVARCHAR(200) NOT NULL,
+    tenNguoiDaiDien NVARCHAR(100) NOT NULL,
+    soDienThoaiLienHe VARCHAR(20) NOT NULL,
+    diaDiemDon NVARCHAR(250) NOT NULL,
+    tienDatCoc DECIMAL(18, 2) DEFAULT 0 CONSTRAINT CK_DangKyDoan_Coc CHECK (tienDatCoc >= 0),
+    CONSTRAINT PK_DangKyDoan PRIMARY KEY (maDangKy),
+    CONSTRAINT FK_DangKyDoan_DangKy FOREIGN KEY (maDangKy) REFERENCES DangKy(maDangKy) ON DELETE CASCADE
+);
+
+CREATE TABLE DangKyKhachLe (
+    maDangKy VARCHAR(20) NOT NULL,
+    tenNguoiLienHe NVARCHAR(100) NOT NULL,
+    soDienThoaiLienHe VARCHAR(20) NOT NULL,
+    CONSTRAINT PK_DangKyKhachLe PRIMARY KEY (maDangKy),
+    CONSTRAINT FK_DangKyKhachLe_DangKy FOREIGN KEY (maDangKy) REFERENCES DangKy(maDangKy) ON DELETE CASCADE
+);
+
+CREATE TABLE ThanhVienDangKy (
+    maThanhVien VARCHAR(20) NOT NULL,
+    maDangKy VARCHAR(20) NOT NULL,
+    hoTen NVARCHAR(100) NOT NULL,
+    ngaySinh DATE NULL,
+    soGiayTo VARCHAR(50) NULL,
+    duocBaoHiem BIT DEFAULT 0,
+    CONSTRAINT PK_ThanhVienDangKy PRIMARY KEY (maThanhVien),
+    CONSTRAINT FK_ThanhVien_DangKy FOREIGN KEY (maDangKy) REFERENCES DangKy(maDangKy) ON DELETE CASCADE
+);
+
+CREATE TABLE ThanhToan (
+    maThanhToan VARCHAR(20) NOT NULL,
+    maDangKy VARCHAR(20) NOT NULL,
+    ngayThanhToan DATETIME2 DEFAULT GETDATE(),
+    soTien DECIMAL(18, 2) NOT NULL CONSTRAINT CK_ThanhToan_SoTien CHECK (soTien > 0),
+    loaiKhoanThu NVARCHAR(50) NULL,
+    hinhThuc NVARCHAR(50) NULL,
+    trangThai NVARCHAR(50) DEFAULT N'Thành công',
+    CONSTRAINT PK_ThanhToan PRIMARY KEY (maThanhToan),
+    CONSTRAINT FK_ThanhToan_DangKy FOREIGN KEY (maDangKy) REFERENCES DangKy(maDangKy)
+);
+
+CREATE TABLE ChiTietLuong (
+    maChiTietLuong VARCHAR(20) NOT NULL,
+    maBangLuong VARCHAR(20) NOT NULL,
+    maHuongDanVien VARCHAR(20) NOT NULL,
+    maPhanCong VARCHAR(20) NULL,
+    luongCoBan DECIMAL(18, 2) DEFAULT 0 CONSTRAINT CK_CTLuong_LCB CHECK (luongCoBan >= 0),
+    lienCongTheoTour DECIMAL(18, 2) DEFAULT 0 CONSTRAINT CK_CTLuong_LienCong CHECK (lienCongTheoTour >= 0),
+    tongTien AS (luongCoBan + lienCongTheoTour) PERSISTED,
+    CONSTRAINT PK_ChiTietLuong PRIMARY KEY (maChiTietLuong),
+    CONSTRAINT FK_CTLuong_BangLuong FOREIGN KEY (maBangLuong) REFERENCES BangLuong(maBangLuong) ON DELETE CASCADE,
+    CONSTRAINT FK_CTLuong_HDV FOREIGN KEY (maHuongDanVien) REFERENCES HuongDanVien(maHuongDanVien),
+    CONSTRAINT FK_CTLuong_PhanCong FOREIGN KEY (maPhanCong) REFERENCES PhanCong(maPhanCong)
+);
+GO
+
+-- 4. HIỆN THỰC CÁC TRIGGER RÀNG BUỘC NGHIỆP VỤ
+
+-- Trigger 1: Kiểm tra Khách Đoàn phải >= 12 người
+CREATE TRIGGER TRG_Check_DangKyDoan_SoLuong
+ON DangKyDoan
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted i
+        JOIN DangKy dk ON i.maDangKy = dk.maDangKy
+        WHERE dk.soLuongKhach < 12
+    )
+    BEGIN
+        RAISERROR (N'Lỗi: Đăng ký theo đoàn yêu cầu số lượng khách phải từ 12 người trở lên!', 16, 1);
+        ROLLBACK TRANSACTION;
+    END
+END;
+GO
+
+-- Trigger 2: Kiểm tra Khách Lẻ phải < 12 người
+CREATE TRIGGER TRG_Check_DangKyKhachLe_SoLuong
+ON DangKyKhachLe
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted i
+        JOIN DangKy dk ON i.maDangKy = dk.maDangKy
+        WHERE dk.soLuongKhach >= 12
+    )
+    BEGIN
+        RAISERROR (N'Lỗi: Khách lẻ đăng ký phải có số lượng dưới 12 người!', 16, 1);
+        ROLLBACK TRANSACTION;
+    END
+END;
+GO
+
+-- Trigger 3: Kiểm tra Phân công HDV không bị trùng lịch tour
+CREATE TRIGGER TRG_Check_PhanCong_TrungLich
+ON PhanCong
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        JOIN ChuyenKhoiHanh c1 ON i.maChuyen = c1.maChuyen
+        JOIN PhanCong pc ON pc.maHuongDanVien = i.maHuongDanVien AND pc.maPhanCong <> i.maPhanCong
+        JOIN ChuyenKhoiHanh c2 ON pc.maChuyen = c2.maChuyen
+        WHERE (c1.ngayKhoiHanh < c2.ngayKetThuc AND c1.ngayKetThuc > c2.ngayKhoiHanh)
+    )
+    BEGIN
+        RAISERROR (N'Lỗi: Hướng dẫn viên đã được phân công cho một chuyến tour khác trùng thời gian!', 16, 1);
+        ROLLBACK TRANSACTION;
+    END
+END;
+GO
+
+
+
+USE QL_TourDuLich;
+GO
+
+-- 1. Thêm Khách hàng mẫu
+INSERT INTO KhachHang (maKhachHang, hoTen, ngaySinh, gioiTinh, diaChi, soDienThoai, email)
+VALUES
+('KH001', N'Nguyễn Văn A', '1985-05-12', N'Nam', N'123 Lê Lợi, Q.1, TP.HCM', '0903123456', 'nguyenvana@gmail.com'),
+('KH002', N'Công ty TNHH Á Châu', '1990-10-20', N'Khác', N'456 Nguyễn Thị Minh Khai, Q.3, TP.HCM', '0918654321', 'contact@achau.com');
+
+-- 2. Thêm Tour mẫu
+INSERT INTO Tour (maTour, tenTour, soNgay, soDem, giaMoiKhach, moTa, trangThai)
+VALUES
+('TOUR001', N'Tour TP.HCM - Đà Lạt 3N2Đ', 3, 2, 2500000, N'Tham quan Đà Lạt mộng mơ', N'Đang hoạt động'),
+('TOUR002', N'Tour TP.HCM - Phú Quốc 4N3Đ', 4, 3, 4800000, N'Khám phá đảo ngọc Phú Quốc', N'Đang hoạt động');
+
+-- 3. Thêm Chuyến khởi hành mẫu (Trạng thái bắt buộc là N'Mở bán')
+INSERT INTO ChuyenKhoiHanh (maChuyen, maTour, ngayKhoiHanh, ngayKetThuc, diemTapTrung, trangThai)
+VALUES
+('CHUYEN001', 'TOUR001', '2026-11-01 06:00:00', '2026-11-03 18:00:00', N'Nhà văn hóa Thanh Niên, Q.1', N'Mở bán'),
+('CHUYEN002', 'TOUR002', '2026-11-15 07:30:00', '2026-11-18 17:00:00', N'Sân bay Tân Sơn Nhất', N'Mở bán');
+GO
