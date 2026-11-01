@@ -1,214 +1,269 @@
 # PHƯƠNG PHÁP PHÁT TRIỂN PHẦN MỀM HƯỚNG ĐỐI TƯỢNG
 
 <p align="center">
-  <strong>OBJECT-ORIENTED SOFTWARE DEVELOPMENT</strong><br/>
-  Hệ thống bài thực hành và sản phẩm học tập
+  <strong>OBJECT-ORIENTED SOFTWARE DEVELOPMENT (OOSD)</strong><br/>
+  Tổng hợp bài thực hành · Phân tích · Thiết kế · Lập trình ứng dụng
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Course-OOSD-1f6feb?style=flat-square" />
-  <img src="https://img.shields.io/badge/Language-C%23%20%7C%20Java-239120?style=flat-square" />
-  <img src="https://img.shields.io/badge/Database-SQL%20Server-cc2927?style=flat-square" />
-  <img src="https://img.shields.io/badge/Modeling-UML%20%7C%20PlantUML-6f42c1?style=flat-square" />
+  <img src="https://img.shields.io/badge/COURSE-OOSD-2457A7?style=flat-square" />
+  <img src="https://img.shields.io/badge/C%23-Windows%20Forms-512BD4?style=flat-square" />
+  <img src="https://img.shields.io/badge/DATABASE-SQL%20Server-CC2927?style=flat-square" />
+  <img src="https://img.shields.io/badge/MODELING-UML%20%7C%20PlantUML-6F42C1?style=flat-square" />
 </p>
 
-Repository tổng hợp các bài thực hành của học phần **Phương pháp phát triển phần mềm hướng đối tượng**. Nội dung được tổ chức theo từng LAB, từ chuẩn bị môi trường, xây dựng ứng dụng quản lý có kết nối cơ sở dữ liệu đến phân tích và thiết kế hệ thống bằng UML, thiết kế dữ liệu và hiện thực các chức năng tiêu biểu.
+Repository lưu trữ các bài thực hành của học phần **Phương pháp phát triển phần mềm hướng đối tượng**. Mỗi LAB là một bài toán hoặc nội dung thực hành riêng theo buổi học, có yêu cầu, phạm vi và sản phẩm đầu ra độc lập. Tùy từng bài, nội dung thực hiện bao gồm làm quen môi trường phát triển, xây dựng giao diện WinForms, kết nối cơ sở dữ liệu, phân tích nghiệp vụ, mô hình hóa UML, thiết kế dữ liệu, cài đặt và kiểm thử.
 
 ## Thông tin học phần
 
-| Nội dung | Thông tin |
+| | |
 |---|---|
 | **Sinh viên** | Lê Hoàng Phúc |
-| **MSSV** | 1250080145 |
+| **Mã số sinh viên** | 1250080145 |
 | **Lớp** | 12_ĐH_CNPM2 |
 | **Giảng viên hướng dẫn** | ThS. Phạm Trọng Huynh |
 | **Học phần** | Phương pháp phát triển phần mềm hướng đối tượng |
 | **Repository** | [phuc05112005/LAB_OOSD](https://github.com/phuc05112005/LAB_OOSD) |
 
-## Mục lục
+## Danh mục bài thực hành
 
-- [Tổng quan các bài thực hành](#tổng-quan-các-bài-thực-hành)
-- [Cấu trúc repository](#cấu-trúc-repository)
-- [Quy trình phân tích và phát triển hệ thống](#quy-trình-phân-tích-và-phát-triển-hệ-thống)
-- [Kiến thức và kinh nghiệm tích lũy](#kiến-thức-và-kinh-nghiệm-tích-lũy)
-- [Công nghệ và công cụ](#công-nghệ-và-công-cụ)
+Các bài dưới đây là những bài thực hành độc lập, không phải các giai đoạn nối tiếp của cùng một hệ thống.
 
----
-
-## Tổng quan các bài thực hành
-
-Các LAB sử dụng những bài toán quản lý khác nhau để vận dụng tư duy hướng đối tượng. Mỗi bài có phạm vi và mức độ triển khai riêng; phần mô tả dưới đây phản ánh nội dung hiện có trong repository.
-
-| Thư mục | Bài toán / nội dung | Nội dung chính |
+| LAB | Bài toán / chủ đề | Nội dung và kết quả thực hiện |
 |---|---|---|
-| [LAB0](LAB0/README.txt) | Thiết lập môi trường phát triển | Kiểm tra Windows, JDK 21, Maven, Git, IntelliJ IDEA; cấu hình project, PlantUML, build, test và đóng gói JAR. |
-| [LAB2](LAB2/README.md) | Quản lý thư viện | Ứng dụng C# Windows Forms kết nối SQL Server LocalDB; tổ chức Forms, Services, Data, Models và hiển thị dữ liệu danh mục, sách, độc giả. |
-| [LAB3](LAB3/README.md) | Quản lý khách sạn | Thiết kế dữ liệu và giao diện cho các nghiệp vụ phòng, tiện nghi, đặt phòng, lưu trú, dịch vụ, trả phòng, đền bù, hóa đơn và thanh toán. |
-| [LAB4](LAB4/README.md) | Cửa hàng trực tuyến e-SHOPPING | Phân tích tác nhân và Use Case; mô hình Activity, Sequence, Class; thiết kế kiến trúc, CSDL và hiện thực minh họa đăng ký khách hàng. |
-| [LAB5](LAB5/README.md) | Quản lý Công ty Du lịch Văn Hóa Việt | Phân tích nghiệp vụ tour; mô hình UML; thiết kế CSDL SQL Server với khóa, ràng buộc, trigger; hiện thực WinForms theo hướng UI – Service – Data và kiểm thử kịch bản. |
-| LAB6 | Quản lý bệnh án | Ứng dụng WinForms tổ chức các màn hình danh mục, đăng ký, lịch hẹn, phiếu khám, tra cứu và thống kê; có lớp Data và Service. |
-| LAB7 | Quản lý nhân sự | Ứng dụng WinForms với các thành phần Forms, Services, Data; thực hành tổ chức chức năng quản lý và thao tác dữ liệu. |
-| LAB8 | Quản lý nước giải khát | Ứng dụng WinForms, phân chia giao diện, dịch vụ và truy cập dữ liệu; thực hành xây dựng chương trình quản lý theo nghiệp vụ. |
-
-> LAB1 và README riêng cho LAB6–LAB8 hiện không có trong các đường dẫn được ghi nhận ở repository. Vì vậy, phần giới thiệu các LAB này chỉ nêu theo tên dự án và cấu trúc mã nguồn đang có, không suy diễn thêm phạm vi chức năng.
-
-### Mạch nội dung giữa các bài
-
-- **LAB0** tạo nền tảng công cụ và quy trình làm việc với project, build, kiểm thử và quản lý mã nguồn.
-- **LAB2–LAB3** rèn luyện cách xây dựng ứng dụng quản lý có giao diện, dữ liệu và xử lý nghiệp vụ.
-- **LAB4** chuyển trọng tâm sang phân tích yêu cầu và mô hình hóa hệ thống bằng UML trước khi cài đặt.
-- **LAB5** kết hợp nhiều công đoạn trong cùng một bài: nghiệp vụ, UML, cơ sở dữ liệu, ràng buộc, giao diện, xử lý và kiểm thử.
-- **LAB6–LAB8** tiếp tục vận dụng cách tổ chức chương trình WinForms và tách các thành phần theo trách nhiệm.
-
----
+| [LAB 00](LAB0/README.txt) | **Thiết lập môi trường và kiểm tra công cụ** | Cấu hình Windows, JDK 21, Maven, Git, IntelliJ IDEA và PlantUML Integration; tạo Maven project Java, chạy chương trình, kiểm thử, đóng gói và thực thi file JAR. |
+| [LAB 02](LAB2/README.md) | **Hệ thống quản lý thư viện** | Xây dựng ứng dụng C# WinForms kết nối SQL Server LocalDB; tổ chức Forms – Services – Data – Models; thiết kế màn hình danh mục, đầu sách, độc giả và thực hiện đọc, hiển thị dữ liệu từ CSDL. Bài làm tập trung vào giao diện và kết nối dữ liệu ở phạm vi hiện tại. |
+| [LAB 03](LAB3/README.md) | **Hệ thống quản lý khách sạn** | Thiết kế CSDL SQL Server và giao diện WinForms cho quản lý phòng, tiện nghi, đặt/nhận phòng, người lưu trú, dịch vụ, đền bù, hóa đơn, thanh toán và trả phòng; xây dựng lớp kết nối, tầng Service và kiểm tra kết nối ứng dụng với CSDL. |
+| [LAB 04](LAB4/README.md) | **Hệ thống cửa hàng trực tuyến e-SHOPPING** | Phân tích tác nhân, 15 Use Case, đặc tả và phân rã chức năng; xây dựng Activity, Sequence, Class, kiến trúc phân tầng và thiết kế CSDL. Phần cài đặt minh họa bằng WinForms kết nối SQL Server với chức năng đăng ký khách hàng, đọc và ghi dữ liệu. |
+| [LAB 05](LAB5/README.md) | **Quản lý Công ty Du lịch Văn Hóa Việt** | Phân tích nghiệp vụ tour, 11 Use Case và 18 lớp; thiết kế Activity, Sequence, Class, ERD và CSDL 18 bảng; hiện thực WinForms theo UI – Service – Data cho nghiệp vụ đăng ký tour theo đoàn; áp dụng khóa, CHECK, trigger và kiểm thử kịch bản. |
+| [LAB 06](LAB6/README.md) | **Quản lý hồ sơ bệnh án của bệnh nhân** | Phân tích quy trình đăng ký khám, cấp/gia hạn hồ sơ, lịch khám định kỳ, phiếu khám, tra cứu và thống kê; xây dựng UML, CSDL SQL Server và ứng dụng WinForms theo UI – Service – Data; xác định quy tắc nghiệp vụ ở Service và CSDL. |
+| [LAB 07](LAB7/README.md) | **Quản lý nhân sự Công ty Sơn Đông Á** | Phân tích tuyển dụng, thử việc, hợp đồng, bảo hiểm, quyết định, phân công, chấm công, phụ trội, tính lương, khen thưởng và kỷ luật; thiết kế UML, CSDL 22 bảng theo mô hình table-per-type; hiện thực WinForms và kiểm thử các ràng buộc nghiệp vụ. |
+| [LAB 08](LAB8/README.md) | **Quản lý cửa hàng nước giải khát** | Phân tích nhập hàng, bán hàng, giao hàng nhiều đợt và ghi nợ; xây dựng UML, ERD/DBML và CSDL 14 bảng; hiện thực WinForms theo UI – Service – Data, xử lý tồn kho bằng transaction và kiểm thử quy tắc bán hàng, nhập hàng, công nợ. |
 
 ## Cấu trúc repository
 
-| Thư mục | Vai trò và nội dung |
-|---|---|
-| **LAB0/** | Tài liệu thiết lập môi trường, cấu hình công cụ, lệnh kiểm tra, project Maven và minh chứng trong thư mục evidence/. |
-| **LAB2/QuanLyThuVien/** | Mã nguồn quản lý thư viện. Forms chứa màn hình; Services xử lý nghiệp vụ; Data quản lý kết nối/truy vấn; Models khai báo mô hình dữ liệu. |
-| **LAB3/QuanLyKhachSan/** | Mã nguồn quản lý khách sạn, chia thành Forms, Services, Data và Models theo nhóm trách nhiệm. |
-| **LAB4/** | Bài toán e-SHOPPING; gồm tài liệu phân tích, thiết kế và project QuanLyShopping minh họa đăng ký khách hàng bằng WinForms. |
-| **LAB5/PTTK/** | Tài liệu phân tích và thiết kế: UseCase/, Class/, Activity/, Sequence/, CSDL/ (ERD và script SQL), Forms/ (minh chứng giao diện). |
-| **LAB5/QuanLyCongTyDuLich/** | Mã nguồn WinForms; Forms là giao diện, Services xử lý nghiệp vụ, Data truy cập CSDL, DTO truyền dữ liệu. |
-| **LAB6/QuanLyBenhAn/** | Mã nguồn quản lý bệnh án; gồm các nhóm Forms, Services và Data. |
-| **LAB7/QuanLyNhanSu/** | Mã nguồn quản lý nhân sự; gồm các nhóm Forms, Services và Data. |
-| **LAB8/QuanLyNuocGiaiKhat/** | Mã nguồn quản lý nước giải khát; gồm các nhóm Forms, Services và Data. |
-| **IMAGES/** | Hình ảnh và minh chứng thực hành; hiện có minh chứng theo từng bước của LAB0. |
+```text
+LAB_OOSD/
+├── LAB0/                         # Thiết lập môi trường Java, Maven, Git, PlantUML
+│   ├── evidence/                 # Minh chứng theo từng bước thực hiện
+│   └── README.txt
+├── LAB2/                         # Ứng dụng quản lý thư viện
+│   ├── QuanLyThuVien/
+│   │   ├── Forms/                # Màn hình WinForms
+│   │   ├── Services/             # Xử lý và điều phối chức năng
+│   │   ├── Data/                 # Kết nối, truy vấn dữ liệu
+│   │   └── Models.cs             # Các lớp mô hình
+│   └── README.md
+├── LAB3/                         # Ứng dụng quản lý khách sạn
+│   ├── QuanLyKhachSan/
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   ├── Data/
+│   │   └── Models/
+│   └── README.md
+├── LAB4/                         # Phân tích, thiết kế và minh họa e-SHOPPING
+│   ├── QuanLyShopping/           # WinForms đăng ký khách hàng
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   └── Data/
+│   └── README.md
+├── LAB5/                         # Quản lý Công ty Du lịch Văn Hóa Việt
+│   ├── PTTK/                     # Use Case, Class, Activity, Sequence, CSDL, Forms
+│   ├── QuanLyCongTyDuLich/       # Mã nguồn WinForms
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   ├── Data/
+│   │   └── DTO/
+│   ├── LAB6_QuanLyCongTyDuLich.docx
+│   └── README.md
+├── LAB6/                         # Quản lý hồ sơ bệnh án
+│   ├── PTTK/                     # UML, ERD, script SQL, ảnh giao diện
+│   ├── QuanLyHoSoBenhAn/         # Mã nguồn WinForms
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   ├── Data/
+│   │   └── DTO/
+│   ├── LAB6_QuanLyHoSoBenhAn.docx
+│   └── README.md
+├── LAB7/                         # Quản lý nhân sự Công ty Sơn Đông Á
+│   ├── PTTK/                     # UML, ERD, script SQL, ảnh giao diện
+│   ├── QuanLyNhanSu/             # Mã nguồn WinForms
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   ├── Data/
+│   │   └── DTO/
+│   ├── LAB7_QuanLyNhanSu.docx
+│   └── README.md
+├── LAB8/                         # Quản lý cửa hàng nước giải khát
+│   ├── PTTK/                     # UML, ERD/DBML, script SQL, ảnh giao diện
+│   ├── QuanLyCuaHangNuocGiaiKhat/ # Mã nguồn WinForms
+│   │   ├── Forms/
+│   │   ├── Services/
+│   │   ├── Data/
+│   │   └── DTO/
+│   ├── LAB8_QuanLyCuaHangNuocGiaiKhat.docx
+│   └── README.md
+└── IMAGES/                       # Hình ảnh minh chứng thực hành
+```
 
-Một số thư mục con có thể thay đổi theo từng bài. README riêng của mỗi LAB là nơi mô tả chi tiết hơn về cách chạy, cấu trúc mã nguồn, cơ sở dữ liệu và kết quả thực hiện.
+Trong các LAB có phần phân tích – thiết kế, thư mục **PTTK** tập hợp tài liệu UML, ERD, script SQL và ảnh giao diện. Thư mục project chứa mã nguồn ứng dụng; các nhóm **Forms**, **Services**, **Data** và **DTO/Models** được sử dụng tùy theo cách tổ chức của từng bài. README riêng của mỗi LAB trình bày chi tiết cấu trúc và cách chạy.
 
 ---
 
-## Quy trình phân tích và phát triển hệ thống
+## Quy trình phân tích, thiết kế và hiện thực phần mềm
 
-Các bài thực hành giúp hình thành một quy trình làm việc có thứ tự: **hiểu đúng bài toán → mô hình hóa → thiết kế → hiện thực → kiểm thử**. Không nên bắt đầu bằng việc tạo Form hoặc viết câu lệnh SQL khi yêu cầu và quy tắc nghiệp vụ chưa rõ.
+Đây là quy trình phương pháp luận tổng quát được vận dụng trong các bài phân tích – thiết kế và xây dựng ứng dụng. **Không phải LAB nào cũng yêu cầu hoặc triển khai đầy đủ tất cả các bước**; phạm vi tài liệu và mã nguồn phụ thuộc đề bài của từng buổi.
 
-### 1. Tóm tắt bài toán và xác định yêu cầu
+### 1. Tóm tắt bài toán và xác định yêu cầu nghiệp vụ
 
-Bắt đầu bằng việc diễn đạt ngắn gọn vấn đề cần giải quyết, mục tiêu của hệ thống, phạm vi và đối tượng sử dụng. Từ đó phân tích yêu cầu nghiệp vụ theo ba thành phần:
+Trước tiên cần diễn đạt vấn đề cần giải quyết, mục tiêu, phạm vi và kết quả mà hệ thống cần hỗ trợ. Từ đề bài, phân tích nghiệp vụ theo các khía cạnh:
 
-| Thành phần | Câu hỏi cần làm rõ |
+| Thành phần | Nội dung cần xác định |
 |---|---|
-| **Đầu vào (Input)** | Ai cung cấp dữ liệu? Dữ liệu nào cần nhập hoặc tiếp nhận từ hệ thống khác? |
-| **Xử lý (Process)** | Hệ thống kiểm tra, tính toán, cập nhật và phối hợp các bước nghiệp vụ như thế nào? |
-| **Đầu ra (Output)** | Kết quả nào được trả về, lưu trữ, hiển thị hoặc dùng cho bước tiếp theo? |
+| **Đầu vào (Input)** | Dữ liệu do người dùng nhập, dữ liệu lấy từ CSDL hoặc hệ thống bên ngoài; nguồn cung cấp và điều kiện hợp lệ. |
+| **Xử lý (Process)** | Các bước nghiệp vụ, phép kiểm tra, tính toán, thay đổi trạng thái và quy trình phối hợp. |
+| **Đầu ra (Output)** | Kết quả trả về, chứng từ, thông báo, báo cáo hoặc dữ liệu được cập nhật. |
+| **Tác nhân (Actor)** | Vai trò hoặc hệ thống bên ngoài trực tiếp tương tác với hệ thống. |
+| **Quy tắc nghiệp vụ** | Điều kiện, giới hạn, công thức, trạng thái, ngoại lệ và các trường hợp không được phép. |
+| **Quyết định triển khai** | Cách cụ thể hóa những điểm đề bài chưa quy định: dữ liệu bổ sung, cách sinh mã, phân quyền, trạng thái, xử lý ngoại lệ và phạm vi tích hợp. |
 
-Đồng thời xác định:
-- **Tác nhân:** người dùng, vai trò hoặc hệ thống bên ngoài tương tác với hệ thống.
-- **Quy tắc nghiệp vụ:** điều kiện hợp lệ, giới hạn, ngoại lệ và các trường hợp bị từ chối.
-- **Quyết định triển khai:** nội dung thuộc phạm vi hệ thống, nội dung do hệ thống ngoài đảm nhiệm và cách xử lý các tình huống đề bài chưa quy định.
+Các quyết định triển khai cần có lý do, nhất quán với nghiệp vụ và được ghi nhận để tránh tự ý thay đổi quy tắc trong quá trình lập trình.
 
 ### 2. Giới thiệu hệ thống và đặc tả yêu cầu
 
-- **Giới thiệu hệ thống:** mục tiêu, phạm vi, đối tượng sử dụng, môi trường và giới hạn.
-- **Yêu cầu chức năng:** hệ thống phải cung cấp những nghiệp vụ nào.
-- **Yêu cầu phi chức năng:** hiệu năng, bảo mật, tính dễ sử dụng, độ tin cậy, khả năng bảo trì và các ràng buộc kỹ thuật.
+- **Giới thiệu hệ thống:** mục tiêu, phạm vi, đối tượng sử dụng, môi trường vận hành và giới hạn.
+- **Yêu cầu chức năng:** những nghiệp vụ hệ thống phải cung cấp, diễn đạt theo hành động và kết quả có thể kiểm tra.
+- **Yêu cầu phi chức năng:** bảo mật, hiệu năng, độ tin cậy, khả năng sử dụng, bảo trì, tương thích và các ràng buộc kỹ thuật.
 
-Yêu cầu cần rõ ràng, có thể kiểm tra và không mâu thuẫn với quy tắc nghiệp vụ.
+Yêu cầu cần rõ nghĩa, không mâu thuẫn và đủ cụ thể để làm căn cứ cho mô hình, thiết kế và kiểm thử.
 
-### 3. Phân tích hệ thống bằng UML
+### 3. Phân tích chức năng bằng Use Case
 
-| Mô hình | Mục đích sử dụng |
+Use Case xác định hệ thống cung cấp chức năng gì và tương tác với những tác nhân nào.
+
+- Xác định ranh giới hệ thống và các Actor thực sự tương tác trực tiếp.
+- Xây dựng biểu đồ Use Case tổng quát theo nghiệp vụ.
+- Đặc tả từng Use Case: mục tiêu, tác nhân, tiền điều kiện, hậu điều kiện, luồng chính, luồng thay thế và ngoại lệ.
+- Phân rã các Use Case phức tạp theo **phân hệ hoặc nhóm chức năng nghiệp vụ**. Việc phân rã nhằm làm rõ phạm vi chức năng, không chia sơ đồ máy móc theo từng Actor.
+- Sử dụng quan hệ `include` và `extend` đúng ý nghĩa: hành vi bắt buộc được tái sử dụng và hành vi mở rộng chỉ phát sinh khi có điều kiện.
+
+### 4. Mô hình hóa luồng nghiệp vụ và tương tác
+
+| Biểu đồ | Vai trò |
 |---|---|
-| **Use Case Diagram** | Xác định ranh giới hệ thống, tác nhân và chức năng ở góc nhìn người sử dụng. |
-| **Đặc tả Use Case** | Mô tả tiền điều kiện, hậu điều kiện, luồng chính, luồng thay thế và ngoại lệ. |
-| **Phân rã Use Case** | Chia chức năng lớn thành các nhóm chức năng con theo phạm vi nghiệp vụ hoặc phân hệ; không phân rã máy móc theo từng tác nhân. |
-| **Activity Diagram** | Mô tả luồng công việc, điều kiện rẽ nhánh, xử lý song song và điểm kết thúc. |
-| **Sequence Diagram** | Thể hiện thứ tự trao đổi thông điệp giữa tác nhân, giao diện, đối tượng điều khiển và các đối tượng liên quan. |
-| **Class Diagram** | Xác định lớp, thuộc tính, phương thức, quan hệ, bội số và trách nhiệm của từng lớp. |
+| **Activity Diagram** | Mô tả quy trình nghiệp vụ từ điểm bắt đầu đến kết thúc; thể hiện hành động, điều kiện, nhánh rẽ và luồng song song khi có. |
+| **Sequence Diagram** | Mô tả trình tự thông điệp giữa Actor và các đối tượng tham gia xử lý một kịch bản; làm rõ đối tượng gọi, phương thức và thứ tự thực thi. |
 
-Các biểu đồ cần thống nhất với đặc tả nghiệp vụ. Một chức năng đã mô tả trong Use Case phải có cách xử lý tương ứng trong mô hình chi tiết và thiết kế.
+Activity tập trung vào luồng công việc; Sequence tập trung vào sự phối hợp và thứ tự tương tác giữa các đối tượng. Hai biểu đồ bổ sung cho nhau, không thay thế nhau.
 
-### 4. Thiết kế lớp và trách nhiệm xử lý
+### 5. Phân tích và thiết kế lớp
 
-Từ kết quả phân tích, xác định các lớp tham gia vào từng chức năng, dữ liệu mà lớp quản lý và hành vi mà lớp chịu trách nhiệm. Cần làm rõ:
+Class Diagram mô tả cấu trúc tĩnh của hệ thống và trách nhiệm của từng lớp:
 
-- Lớp nào tiếp nhận yêu cầu?
-- Lớp nào điều phối luồng xử lý?
-- Lớp nào giữ dữ liệu và bảo đảm quy tắc?
-- Lớp nào truy xuất hoặc lưu trữ dữ liệu?
-- Các lớp liên hệ với nhau theo quan hệ nào và với bội số bao nhiêu?
+- Xác định lớp nghiệp vụ, thuộc tính và phương thức.
+- Xác định quan hệ kết hợp, kết tập, hợp thành, kế thừa và phụ thuộc khi phù hợp.
+- Ghi rõ bội số, vai trò quan hệ và các ràng buộc quan trọng.
+- Phân biệt lớp phân tích với lớp thiết kế/cài đặt; bổ sung kiểu dữ liệu, chữ ký phương thức và trách nhiệm xử lý ở mức chi tiết phù hợp.
+- Thiết kế chức năng bằng cách xác định lớp nào tiếp nhận yêu cầu, lớp nào điều phối nghiệp vụ, lớp nào quản lý dữ liệu và lớp nào thực hiện truy cập CSDL.
 
-Thiết kế tốt giúp tránh dồn toàn bộ nghiệp vụ vào Form hoặc một lớp duy nhất, đồng thời giảm phụ thuộc không cần thiết giữa các thành phần.
+Mỗi lớp cần có trách nhiệm rõ ràng. Không nên đưa toàn bộ nghiệp vụ vào Form hoặc tạo lớp chỉ để sao chép nguyên trạng cấu trúc bảng dữ liệu.
 
-### 5. Thiết kế cơ sở dữ liệu
+### 6. Thiết kế cơ sở dữ liệu
 
-Quá trình thiết kế dữ liệu cần đi từ mô hình nghiệp vụ đến cấu trúc có thể triển khai:
+Quá trình thiết kế dữ liệu chuyển các khái niệm và quan hệ nghiệp vụ thành cấu trúc lưu trữ:
 
-1. Xác định thực thể và mối quan hệ để xây dựng **ERD**.
-2. Chuyển ERD thành **lược đồ cơ sở dữ liệu quan hệ**.
-3. Xác định khóa chính (PK), khóa ngoại (FK), khóa duy nhất và các thuộc tính bắt buộc.
-4. Bổ sung ràng buộc dữ liệu: NOT NULL, UNIQUE, CHECK, DEFAULT, cùng các quy tắc cần xử lý bằng trigger hoặc transaction.
-5. Viết **script SQL** tạo cơ sở dữ liệu, bảng, quan hệ, ràng buộc và dữ liệu kiểm thử cần thiết.
+1. **ERD (Entity Relationship Diagram):** xác định thực thể, thuộc tính, quan hệ và lực lượng kết hợp.
+2. **Lược đồ cơ sở dữ liệu quan hệ:** chuyển thực thể thành bảng, xác định cột, khóa chính và khóa ngoại; xử lý quan hệ nhiều – nhiều bằng bảng kết hợp khi cần.
+3. **Ràng buộc dữ liệu:** xác định PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, khóa ghép và các quy tắc toàn vẹn.
+4. **Hiện thực quy tắc nghiệp vụ:** đặt ràng buộc tại CSDL khi có thể; dùng Service hoặc transaction cho quy tắc cần phối hợp nhiều dữ liệu, nhiều bước hoặc kiểm tra theo ngữ cảnh.
+5. **Script SQL:** tạo CSDL, bảng, khóa, chỉ mục, constraint, trigger và dữ liệu mẫu phục vụ chạy thử.
 
-Cần phân biệt quy tắc nào nên được bảo vệ ngay tại CSDL và quy tắc nào thuộc luồng nghiệp vụ của ứng dụng. Không nên chỉ kiểm tra ở giao diện vì dữ liệu có thể được ghi từ nhiều nguồn khác nhau.
+ERD thể hiện cấu trúc và quan hệ ở mức khái niệm; lược đồ quan hệ và script SQL thể hiện cách tổ chức, triển khai dữ liệu cụ thể. Ba thành phần cần thống nhất với mô hình lớp và quy tắc nghiệp vụ.
 
-### 6. Thiết kế kiến trúc và triển khai
+### 7. Thiết kế kiến trúc và triển khai
 
-Sau khi xác định lớp và dữ liệu, tổ chức hệ thống thành các thành phần có trách nhiệm rõ ràng. Với các ứng dụng WinForms trong repository, cách phân chia thường gặp là:
+Với các ứng dụng WinForms trong repository, mô hình tổ chức thường được áp dụng là:
 
-**Presentation / Forms → Services → Data Access → Database**
+```text
+Windows Forms (UI)
+       |
+       v
+    Service
+       |
+       v
+      Data
+       |
+       v
+   SQL Server
+```
 
-- **Presentation / Forms:** tiếp nhận thao tác, hiển thị dữ liệu và thông báo kết quả.
-- **Services:** điều phối nghiệp vụ, kiểm tra điều kiện và gọi các thao tác dữ liệu.
-- **Data Access:** quản lý kết nối, truy vấn và cập nhật CSDL.
-- **Database:** lưu trữ dữ liệu và thực thi các ràng buộc phù hợp.
+- **UI / Forms:** tiếp nhận thao tác, hiển thị dữ liệu và phản hồi cho người dùng.
+- **Service:** kiểm tra và điều phối nghiệp vụ, quản lý luồng xử lý và transaction khi cần.
+- **Data:** quản lý kết nối, câu lệnh truy vấn và thao tác dữ liệu bằng ADO.NET.
+- **Database:** lưu trữ dữ liệu, bảo đảm khóa và các ràng buộc toàn vẹn.
 
-Với hệ thống có nhiều thành phần, cần thể hiện thêm **biểu đồ kiến trúc phân tầng** và **biểu đồ triển khai (Deployment Diagram)** để làm rõ các thành phần phần mềm được bố trí trên môi trường chạy nào và giao tiếp ra sao.
+Ở mức thiết kế hệ thống, **biểu đồ kiến trúc phân tầng** mô tả cách chia phần mềm thành các tầng/thành phần và quan hệ phụ thuộc; **Deployment Diagram** mô tả môi trường thực thi, nút triển khai và kết nối giữa chúng. Hai biểu đồ trả lời hai câu hỏi khác nhau: phần mềm được tổ chức ra sao và được triển khai ở đâu.
 
-### 7. Thiết kế giao diện và hiện thực
+### 8. Thiết kế giao diện và kết nối CSDL
 
-Thiết kế giao diện theo nghiệp vụ và luồng sử dụng đã phân tích. Mỗi màn hình cần có mục đích cụ thể, dữ liệu đầu vào rõ ràng, cách phản hồi khi thành công hoặc thất bại và quy tắc kiểm tra phù hợp.
+Thiết kế Form dựa trên chức năng và luồng nghiệp vụ đã xác định. Mỗi màn hình cần có mục đích rõ ràng, trường nhập phù hợp, cách hiển thị dữ liệu, thao tác và thông báo kết quả.
 
-Khi cài đặt, bảo đảm luồng xử lý của chương trình bám sát thiết kế: giao diện không tự gánh toàn bộ nghiệp vụ, câu lệnh truy vấn không rải rác trong các Form và dữ liệu nhập cần được kiểm tra ở tầng phù hợp.
+Khi hiện thực WinForms kết nối SQL Server:
+- Cấu hình chuỗi kết nối trong App.config.
+- Tập trung thao tác kết nối và truy vấn ở tầng Data.
+- Gọi Service từ Form thay vì viết SQL trực tiếp trong sự kiện giao diện.
+- Kiểm tra dữ liệu đầu vào và phản hồi lỗi dễ hiểu.
+- Sử dụng transaction cho nghiệp vụ cập nhật nhiều bảng cần bảo đảm thành công hoặc rollback đồng bộ.
 
-### 8. Kiểm thử và đối chiếu
+### 9. Kiểm thử và đối chiếu kết quả
 
-Kiểm thử theo luồng chính, luồng thay thế, dữ liệu biên và các trường hợp vi phạm quy tắc nghiệp vụ. Đối chiếu xuyên suốt:
+Kiểm thử dựa trên yêu cầu và quy tắc nghiệp vụ, không chỉ kiểm tra Form có mở được hay dữ liệu có hiển thị hay không.
 
-**Yêu cầu → Use Case → Activity / Sequence → Class / Database → Form / Service → Test Case**
+Các nhóm tình huống cần xem xét:
+- Luồng chính với dữ liệu hợp lệ.
+- Luồng thay thế và điều kiện phát sinh.
+- Dữ liệu thiếu, sai định dạng, trùng lặp hoặc ngoài giới hạn.
+- Vi phạm khóa và ràng buộc CSDL.
+- Sai trạng thái, sai thứ tự thao tác hoặc xung đột dữ liệu.
+- Nghiệp vụ nhiều bước cần transaction và rollback.
 
-Kết quả kiểm thử cần chỉ ra dữ liệu đầu vào, bước thực hiện, kết quả mong đợi và kết quả thực tế. Khi phát hiện sai lệch, xác định lỗi nằm ở yêu cầu, mô hình, thiết kế, mã nguồn hay dữ liệu trước khi sửa.
+Mỗi test case cần có điều kiện/dữ liệu đầu vào, các bước thực hiện, kết quả mong đợi và kết quả thực tế. Khi phù hợp, có thể truy vết theo chuỗi:
+
+**Yêu cầu nghiệp vụ → Use Case → Activity / Sequence → Class → CSDL → Form / Service → Test Case**
 
 ---
 
-## Kiến thức và kinh nghiệm tích lũy
+## Kiến thức và kinh nghiệm rút ra
 
-Qua các bài thực hành, những nội dung quan trọng nhất không chỉ là sử dụng công cụ hay hoàn thành một giao diện, mà là hiểu mối liên hệ giữa các quyết định trong quá trình phát triển phần mềm:
+Qua các bài thực hành với nhiều bài toán quản lý khác nhau, những kiến thức có thể tổng kết gồm:
 
-1. **Phân tích trước khi lập trình:** yêu cầu càng rõ thì việc thiết kế chức năng, dữ liệu và kiểm thử càng ít phải sửa đổi về sau.
-2. **Mô hình hóa để thống nhất cách hiểu:** Use Case mô tả hệ thống cung cấp gì; Activity mô tả quy trình diễn ra thế nào; Sequence mô tả các đối tượng phối hợp ra sao; Class mô tả cấu trúc và trách nhiệm.
-3. **Thiết kế hướng đối tượng:** lớp cần có trách nhiệm rõ ràng, quan hệ hợp lý và mức phụ thuộc vừa đủ. Không nên biến sơ đồ lớp thành bản liệt kê bảng dữ liệu hoặc gom mọi xử lý vào một đối tượng.
-4. **Dữ liệu phải được bảo vệ bằng ràng buộc:** PK, FK, UNIQUE, CHECK, trigger và transaction giúp duy trì tính nhất quán, kể cả khi dữ liệu không đi qua giao diện chính.
-5. **Tách biệt các tầng:** Forms, Services và Data giúp mã nguồn dễ đọc, kiểm tra, thay đổi và bảo trì hơn so với cách viết giao diện gắn trực tiếp với truy vấn SQL.
-6. **Kiểm thử theo quy tắc nghiệp vụ:** không chỉ kiểm tra trường hợp thành công; cần thử dữ liệu không hợp lệ, trùng lặp, vượt giới hạn, sai trạng thái và các tình huống ngoại lệ.
-7. **Quản lý môi trường và mã nguồn:** cấu hình công cụ đúng, lưu minh chứng, tổ chức thư mục và sử dụng Git giúp quá trình làm việc có thể tái hiện và theo dõi.
-
-### Kết luận
-
-Điều quan trọng rút ra từ học phần là phát triển phần mềm hướng đối tượng không bắt đầu từ việc viết mã, mà bắt đầu từ việc hiểu bài toán và xác định đúng trách nhiệm của từng thành phần. Một sản phẩm có chất lượng cần giữ được sự nhất quán từ yêu cầu nghiệp vụ, mô hình UML, thiết kế lớp, cơ sở dữ liệu đến cài đặt và kiểm thử.
-
-Repository này lưu lại quá trình thực hành theo từng bước, đồng thời là tài liệu tham khảo để tiếp tục vận dụng quy trình phân tích, thiết kế và xây dựng phần mềm trong các học phần và dự án tiếp theo.
-
----
+1. **Hiểu bài toán trước khi chọn cách làm:** cần xác định đúng phạm vi, Actor, dữ liệu, quy trình và quy tắc nghiệp vụ trước khi thiết kế hoặc lập trình.
+2. **Phân biệt các mô hình UML:** Use Case mô tả chức năng từ góc nhìn bên ngoài; Activity mô tả luồng công việc; Sequence mô tả tương tác theo thời gian; Class mô tả cấu trúc và trách nhiệm của đối tượng.
+3. **Thiết kế lớp có trách nhiệm:** quan hệ và bội số phải phản ánh đúng nghiệp vụ; kế thừa, kết hợp và hợp thành cần được lựa chọn theo ý nghĩa thực tế, không chỉ theo hình thức sơ đồ.
+4. **Thiết kế dữ liệu có tính toàn vẹn:** PK, FK, UNIQUE, CHECK, DEFAULT, trigger và transaction giúp ngăn dữ liệu sai và bảo đảm các thao tác nhiều bước được thực hiện nhất quán.
+5. **Tách giao diện khỏi xử lý và truy cập dữ liệu:** mô hình Forms – Services – Data làm rõ trách nhiệm, hạn chế phụ thuộc và giúp sửa lỗi thuận tiện hơn.
+6. **Kết nối mô hình với sản phẩm:** sơ đồ không chỉ để minh họa; thiết kế cần đủ cụ thể để triển khai thành lớp, Form, câu lệnh SQL và kịch bản kiểm thử.
+7. **Kiểm thử từ quy tắc nghiệp vụ:** cần kiểm tra cả trường hợp hợp lệ, không hợp lệ, biên và ngoại lệ; đồng thời xác định rõ quy tắc được bảo vệ ở Service hay CSDL.
+8. **Làm việc có tổ chức:** quản lý cấu hình, cấu trúc thư mục, script, tài liệu, minh chứng và lịch sử Git giúp việc phát triển dễ theo dõi và tái hiện.
 
 ## Công nghệ và công cụ
 
-| Nhóm | Công cụ / công nghệ đã sử dụng trong các LAB |
+| Nhóm | Công nghệ / công cụ |
 |---|---|
 | Ngôn ngữ | C#, Java |
-| Nền tảng giao diện | Windows Forms, .NET Framework |
-| Cơ sở dữ liệu | Microsoft SQL Server, SQL Server LocalDB |
+| Nền tảng ứng dụng | Windows Forms, .NET Framework 4.7.2, Java 21 |
+| Cơ sở dữ liệu | Microsoft SQL Server, SQL Server LocalDB / Express |
 | Truy cập dữ liệu | ADO.NET, System.Data.SqlClient |
-| Phân tích và mô hình hóa | UML, Use Case, Activity, Sequence, Class, ERD |
-| Công cụ sơ đồ | PlantUML, draw.io, StarUML, dbdiagram.io |
-| Phát triển | Visual Studio, IntelliJ IDEA, JDK 21, Maven |
+| Java build | Apache Maven |
+| Phân tích và thiết kế | UML, Use Case, Activity, Sequence, Class, ERD |
+| Công cụ mô hình hóa | PlantUML, StarUML, draw.io, dbdiagram.io (DBML) |
+| IDE và quản trị CSDL | Visual Studio, IntelliJ IDEA, SQL Server Management Studio |
 | Quản lý mã nguồn | Git, GitHub |
 
 ---
 
 <p align="center">
-  <sub>Học phần Phương pháp phát triển phần mềm hướng đối tượng · Lê Hoàng Phúc · 1250080145</sub>
+  <strong>LÊ HOÀNG PHÚC</strong><br/>
+  <sub>12_ĐH_CNPM2 · MSSV: 1250080145</sub><br/>
+  <sub>Phương pháp phát triển phần mềm hướng đối tượng</sub>
 </p>
