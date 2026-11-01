@@ -1,0 +1,30 @@
+OOAD LAB00 - ENVIRONMENT
+
+Operating System:
+Windows 11
+
+Architecture:
+x64 / AMD64
+
+Java:
+java version "21.0.7" 2025-04-15 LTS
+Java(TM) SE Runtime Environment (build 21.0.7+8-LTS-245)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.7+8-LTS-245, mixed mode, sharing)
+
+Maven:
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: D:\Software\Java\apache-maven-3.9.11
+Java version: 21.0.7, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-21
+Default locale: en_US, platform encoding: UTF-8
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"
+Git:
+git version 2.45.1.windows.1
+
+Project SDK:
+JDK 21
+
+IDE:
+IntelliJ IDEA 2026.2.0.1
+
+PlantUML:
+PlantUML Integration - Enabled
