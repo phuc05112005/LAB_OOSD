@@ -49,6 +49,65 @@ Các đường dẫn bên dưới trỏ đến tài liệu hoặc thư mục tư
 Thư mục [IMAGES/](IMAGES/) lưu hình ảnh sơ đồ, giao diện và minh chứng theo từng LAB. Các hình dưới đây được nhúng trực tiếp từ repository; có thể mở ảnh để xem kích thước đầy đủ.
 
 <details>
+<summary><strong>LAB 00 – Thiết lập môi trường và kiểm tra công cụ</strong></summary>
+
+Các hình ảnh dưới đây là minh chứng cho quá trình thiết lập và kiểm tra môi trường phát triển: Java JDK 21, Maven, Git, IntelliJ IDEA, PlantUML Integration, chạy chương trình Java, build/test bằng Maven và đóng gói/chạy file JAR.
+
+**Bước 01–04 – Kiểm tra công cụ và môi trường**
+
+| Bước 01 | Bước 02 |
+|---|---|
+| ![LAB00 – Bước 01](IMAGES/LAB0/step-01/result.png) | ![LAB00 – Bước 02](IMAGES/LAB0/step-02/result.png) |
+
+![LAB00 – Bước 03](IMAGES/LAB0/step-03/Screenshot%202026-09-04%20155927.png)
+
+![LAB00 – Bước 04](IMAGES/LAB0/step-04/result.png)
+
+**Bước 05–08 – Cấu hình project và công cụ phát triển**
+
+| Bước 05 | Bước 06 |
+|---|---|
+| ![LAB00 – Bước 05](IMAGES/LAB0/step-05/result.png) | ![LAB00 – Bước 06](IMAGES/LAB0/step-06/result.png) |
+
+| Bước 07 | Bước 08 |
+|---|---|
+| ![LAB00 – Bước 07](IMAGES/LAB0/step-07/result.png) | ![LAB00 – Bước 08](IMAGES/LAB0/step-08/result.png) |
+
+**Bước 09–12 – Chạy chương trình và kiểm tra Maven**
+
+| Bước 09 | Bước 10 |
+|---|---|
+| ![LAB00 – Bước 09](IMAGES/LAB0/step-09/result.png) | ![LAB00 – Bước 10](IMAGES/LAB0/step-10/result.png) |
+
+![LAB00 – Bước 10: minh chứng bổ sung](IMAGES/LAB0/step-10/result2.png)
+
+| Bước 11 – Minh chứng 1 | Bước 11 – Minh chứng 2 |
+|---|---|
+| ![LAB00 – Bước 11: minh chứng 1](IMAGES/LAB0/step-11/result1.png) | ![LAB00 – Bước 11: minh chứng 2](IMAGES/LAB0/step-11/result2.png) |
+
+![LAB00 – Bước 12](IMAGES/LAB0/step-12/result.png)
+
+**Bước 13–17 – Đóng gói, chạy JAR và hoàn tất môi trường**
+
+![LAB00 – Bước 13](IMAGES/LAB0/step-13/result.png)
+
+| Bước 14 – Minh chứng 1 | Bước 14 – Minh chứng 2 |
+|---|---|
+| ![LAB00 – Bước 14: minh chứng 1](IMAGES/LAB0/step-14/result1.png) | ![LAB00 – Bước 14: minh chứng 2](IMAGES/LAB0/step-14/result2.png) |
+
+| Bước 14 – Minh chứng 3 | Bước 14 – Minh chứng 4 |
+|---|---|
+| ![LAB00 – Bước 14: minh chứng 3](IMAGES/LAB0/step-14/result3.png) | ![LAB00 – Bước 14: minh chứng 4](IMAGES/LAB0/step-14/result4.png) |
+
+![LAB00 – Bước 15](IMAGES/LAB0/step-15/result.png)
+
+Bước 16 lưu thông tin môi trường trong file [environment.txt](IMAGES/LAB0/step-16/environment.txt).
+
+![LAB00 – Bước 17](IMAGES/LAB0/step-17/result.png)
+
+</details>
+
+<details>
 <summary><strong>LAB 01 – Bài tập và mô hình UML</strong></summary>
 
 **Bài 1**
